@@ -2,22 +2,22 @@ package com.sample.dao;
 
 import java.util.List;
 
+import com.sample.model.Employee;
 import com.sample.model.Student;
 
 
 public class StudentDAOImpl extends BaseDaoImpl implements StudentDAO {
 	
 	
-	public String addNewStudent(String student_name, String father_name,
-			String section, String type_of_student) {
+	public String addNewEmployee(Employee employee) {
 		
 		String returnVal="failed";
-		if(null == student_name || student_name.isEmpty() || null == father_name || father_name.isEmpty()){
+		if(null == employee.getEmp_name() || employee.getEmp_name().isEmpty()){
 			return returnVal;
 		}
 		
-		String SQL ="INSERT INTO student(student_name,father_name,section,type_of_student) VALUES(?,?,?,?)";
-		int update = getJdbcTemplate().update(SQL, new Object[]{student_name, father_name, section, type_of_student});
+		String SQL ="INSERT INTO employee(emp_name,emp_salary,dept_id,address) VALUES(?,?,?,?)";
+		int update = getJdbcTemplate().update(SQL, new Object[]{employee});
 		if(update >= 1){
         	returnVal="success";
         }

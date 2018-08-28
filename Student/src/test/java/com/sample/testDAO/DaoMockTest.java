@@ -1,4 +1,4 @@
-package com.sample.testDAO;
+/*package com.sample.testDAO;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -91,3 +91,4 @@ public class DaoMockTest extends BaseDaoMockTest {
 	}
 	
 }
+*/

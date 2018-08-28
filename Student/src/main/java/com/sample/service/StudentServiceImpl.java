@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sample.dao.StudentDAO;
+import com.sample.model.Employee;
 import com.sample.model.Student;
 
 @Service
@@ -16,10 +17,9 @@ public class StudentServiceImpl implements StudentService{
 	
 
 	
-	public String addNewStudent(String student_name, String father_name,
-			String section, String type_of_student) {
+	public String addNewEmployee(Employee employee) {
 		
-		return studentDAO.addNewStudent(student_name, father_name, section, type_of_student);
+		return studentDAO.addNewEmployee(employee);
 	}
 
 	

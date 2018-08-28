@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,13 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.sample.model.Employee;
 import com.sample.model.Student;
 import com.sample.service.StudentService;
 
 
-
 @Controller
-
 @RequestMapping(value="/ctrl")
 public class StudentController {
 	
@@ -27,20 +24,24 @@ public class StudentController {
 	StudentService studentService;
 	
 	
-	@RequestMapping(value = "/addStudent")
+	@RequestMapping(value = "/addEmployee")
 	public ModelAndView addUser(){
 		
-		return new ModelAndView("addStudent");
+		return new ModelAndView("addEmployee");
 	}
 	
-	@RequestMapping(value = "/new_student")
-	public @ResponseBody String newStudent(@RequestParam String student_name, @RequestParam String father_name, @RequestParam String section, @RequestParam String type_of_student){
-		System.out.println("Student Name : "+student_name);
-		System.out.println("Father's Name : "+father_name);
-		System.out.println("Section : "+section);
-		System.out.println("Type of student : "+type_of_student);
-		String msg=studentService.addNewStudent(student_name,father_name, section, type_of_student);
-		String str=(msg != null && !msg.equals("") && msg.equalsIgnoreCase("success") ? "Student details created successfully":"Failed to create new student details");
+	@RequestMapping(value = "/new_employee")
+	public @ResponseBody String newStudent(@RequestParam String emp_name, @RequestParam double emp_salary, @RequestParam int dept_id, @RequestParam String address){
+		System.out.println("Employee Name : "+emp_name);
+		System.out.println("Employee Salary : "+emp_salary);
+		System.out.println("Department Id : "+dept_id);
+		Employee employee = new Employee();
+		employee.setEmp_name(emp_name);
+		employee.setEmp_salary(emp_salary);
+		employee.setDept_id(dept_id);
+		employee.setAddress(address);
+		String msg=studentService.addNewEmployee(employee);
+		String str=(msg != null && !msg.equals("") && msg.equalsIgnoreCase("success") ? "Employee details created successfully":"Failed to create new Employee details");
 		return str;
 		}
 	
